@@ -12,6 +12,7 @@
 		0691EF371A5E428A00145005 /* swizzleXCTestCaseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0691EF361A5E428A00145005 /* swizzleXCTestCaseTests.m */; };
 		0691EF421A5E436E00145005 /* SingletonObjectA.h in Headers */ = {isa = PBXBuildFile; fileRef = 0691EF401A5E436E00145005 /* SingletonObjectA.h */; };
 		0691EF431A5E436E00145005 /* SingletonObjectA.m in Sources */ = {isa = PBXBuildFile; fileRef = 0691EF411A5E436E00145005 /* SingletonObjectA.m */; };
+		0691EF461A5EFCBC00145005 /* SingletonObjectA.m in Sources */ = {isa = PBXBuildFile; fileRef = 0691EF411A5E436E00145005 /* SingletonObjectA.m */; };
 		8BA13165F1689788E4EE82FA /* libPods-swizzleXCTestCaseTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CBFE8FC5DE06DA15F65F3AF8 /* libPods-swizzleXCTestCaseTests.a */; };
 		DF3DFD79A600B80AD50640DB /* libPods-swizzleXCTestCase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63E8EB615A2A7CDBEA28E3F3 /* libPods-swizzleXCTestCase.a */; };
 /* End PBXBuildFile section */
@@ -325,6 +326,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0691EF461A5EFCBC00145005 /* SingletonObjectA.m in Sources */,
 				0691EF371A5E428A00145005 /* swizzleXCTestCaseTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -13,36 +13,44 @@
 
 #import "SingletonObjectA.h"
 
-@interface Reachability (SwizzleTest)
+@interface SwizzleManager : NSObject 
 
 + (void)swizzleToDisconnected;
 + (void)swizzleOffDisconnected;
 
-- (NetworkStatus)test_currentReachabilityStatusDisconnected;
-
 @end
 
-@implementation Reachability (SwizzleTest)
+@implementation SwizzleManager
 
 + (void)load {
-    [Reachability swizzleToDisconnected];
+    [SwizzleManager swizzleToDisconnected];
 }
 
 + (void)swizzleFunctionA:(SEL)selectorA withB:(SEL)selectorB {
     NSError *error;
-    BOOL result = [[self class] jr_swizzleMethod:selectorA withMethod:selectorB error:&error];
+    BOOL result = [[Reachability class] jr_swizzleMethod:selectorA withMethod:selectorB error:&error];
     if (!result || error) {
         NSLog(@"Can't swizzle methods - %@", [error description]);
     }
 }
 
 + (void)swizzleToDisconnected {
-    [Reachability swizzleFunctionA:@selector(currentReachabilityStatus) withB:@selector(test_currentReachabilityStatusDisconnected)];
+    [SwizzleManager swizzleFunctionA:@selector(currentReachabilityStatus) withB:@selector(test_currentReachabilityStatusDisconnected)];
 }
 
 + (void)swizzleOffDisconnected {
-    [Reachability swizzleToDisconnected];
+    [SwizzleManager swizzleToDisconnected];
 }
+
+@end
+
+@interface Reachability (SwizzleTest)
+
+- (NetworkStatus)test_currentReachabilityStatusDisconnected;
+
+@end
+
+@implementation Reachability (SwizzleTest)
 
 - (NetworkStatus)test_currentReachabilityStatusDisconnected {
     return NotReachable;
@@ -70,6 +78,8 @@
     
     Reachability* reachability = [Reachability reachabilityWithHostname:@"www.google.com"];
     
+    NSLog(@"%p", [Reachability class]);
+    
     // This will call the swizzled function above: test_currentReachabilityStatusDisconnected
     NetworkStatus networkStatus = [reachability currentReachabilityStatus];
     
@@ -86,7 +96,7 @@
     //
     //
     
-    [Reachability swizzleOffDisconnected];
+    [SwizzleManager swizzleOffDisconnected];
 }
 
 

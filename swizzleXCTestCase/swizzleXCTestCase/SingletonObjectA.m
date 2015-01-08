@@ -31,6 +31,9 @@
 - (void)checkAmOnline {
     
     Reachability* reachability = [Reachability reachabilityWithHostname:@"www.google.com"];
+    
+    NSLog(@"%p", [Reachability class]);
+    
     NetworkStatus networkStatus = [reachability currentReachabilityStatus];
     
     NSLog(@"networkStatus is: %ld", networkStatus);
