@@ -1,0 +1,15 @@
+
+source 'https://github.com/CocoaPods/Specs.git'
+
+target 'swizzleXCTestCase' do
+    platform :ios, '8.0'
+    pod 'Reachability', '~> 3.1.1'
+    pod 'JRSwizzle', '~> 1.0'
+end
+
+target 'swizzleXCTestCaseTests' do
+    platform :ios, '8.0'
+    pod 'Reachability', '~> 3.1.1'
+    pod 'JRSwizzle', '~> 1.0'
+end
+
